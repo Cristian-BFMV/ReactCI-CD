@@ -6,20 +6,6 @@ function App() {
   const [count, setCount] = useState(0);
 
   const handleCount = useCallback(() => {
-    if (count === 1) {
-      console.log(count);
-    } else if (count === 1) {
-      console.log(count);
-    } else if (count === 1) {
-      console.log(count);
-    } else if (count === 1) {
-      console.log(count);
-    } else if (count === 1) {
-      console.log(count);
-    } else if (count === 1) {
-      console.log(count);
-    }
-
     setCount(count => count + 1);
   }, []);
 

@@ -46,9 +46,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       - name: Build
         run: npm run build
-        needs: Sonar
       - name: Deploy
-        needs: Build
         uses: lbertenasco/s3-deploy@v1
         with:
           folder: dist

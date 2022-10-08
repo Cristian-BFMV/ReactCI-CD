@@ -10,7 +10,7 @@ on:
     branches: ['master']
 
 jobs:
-  CI/CD:
+  CI_CD:
     runs-on: ubuntu-latest
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}

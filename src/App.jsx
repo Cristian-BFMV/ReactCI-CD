@@ -28,6 +28,7 @@ function App() {
       </div>
       <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
       <p className="read-the-docs">This is a test for cloudfront invalidation</p>
+      <p className="read-the-docs">This is a second test for cloudfront invalidation</p>
     </div>
   );
 }

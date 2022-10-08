@@ -1,9 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useCallback, useState } from 'react';
+import './App.css';
+import reactLogo from './assets/react.svg';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+
+  const handleCount = useCallback(() => {
+    if (count === 1) {
+      console.log(count);
+    } else if (count === 2) {
+      console.log(count);
+    } else if (count === 2) {
+      console.log(count);
+    } else if (count === 3) {
+      console.log(count);
+    } else if (count === 4) {
+      console.log(count);
+    }
+
+    setCount(count => count + 1);
+  }, []);
 
   return (
     <div className="App">
@@ -17,18 +33,14 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+        <button onClick={handleCount}>count is {count}</button>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

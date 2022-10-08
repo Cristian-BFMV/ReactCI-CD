@@ -46,6 +46,6 @@ jobs:
       - name: Build
         run: npm run build
       - name: Copy files to the test website with the AWS CLI
-        run: aws s3 sync ./dist ${{ secrets.S3_BUCKET }}
+        run: aws s3 sync ./dist ${{ secrets.S3_BUCKET }} --acl public-read
       - name: Invalidating AWS cloudfront cache
         run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"

@@ -11,7 +11,7 @@ describe('App component', () => {
     setup();
 
     expect(
-      screen.getByText('Click on the Vite and React logos to learn more, deploy test')
+      screen.getByText('Click on the Vite and React logos to learn more')
     ).toBeInTheDocument();
   });
 });

@@ -10,8 +10,13 @@ on:
     branches: ['master']
 
 jobs:
-  build:
+  ci:
     runs-on: ubuntu-latest
+
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
 
     strategy:
       matrix:
@@ -34,8 +39,19 @@ jobs:
         run: npm run test
       - name: Run E2E test
         run: npm run test:e2e
-      - name: Sonar Analysis
+      - name: Sonar
         uses: sonarsource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: Build
+        run: npm run build
+        needs: Sonar
+      - name: Deploy
+        needs: Build
+        uses: lbertenasco/s3-deploy@v1
+        with:
+          folder: dist
+          bucket: ${{ secrets.S3_BUCKET }}
+          dist-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
+          invalidation: / *

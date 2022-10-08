@@ -6,18 +6,6 @@ function App() {
   const [count, setCount] = useState(0);
 
   const handleCount = useCallback(() => {
-    if (count === 1) {
-      console.log(count);
-    } else if (count === 2) {
-      console.log(count);
-    } else if (count === 2) {
-      console.log(count);
-    } else if (count === 3) {
-      console.log(count);
-    } else if (count === 4) {
-      console.log(count);
-    }
-
     setCount(count => count + 1);
   }, []);
 
@@ -38,7 +26,9 @@ function App() {
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
       </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more, deploy test
+      </p>
     </div>
   );
 }

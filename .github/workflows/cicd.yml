@@ -36,8 +36,6 @@ jobs:
         run: npm install --save
       - name: Run unit tests
         run: npm run test
-      - name: Run E2E test
-        run: npm run test:e2e
       - name: Sonar
         uses: sonarsource/sonarcloud-github-action@master
         env:
@@ -48,6 +46,8 @@ jobs:
         uses: sonarsource/sonarqube-quality-gate-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: Run E2E test
+        run: npm run test:e2e
       - name: Build
         run: npm run build
       - name: Uploading build files to S3 bucket
